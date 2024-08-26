@@ -1,0 +1,21 @@
+{
+	"name": "vue",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bullseye",
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/pnpm:2": {
+			"version": "9.8.0"
+		}
+	},
+	"forwardPorts": [
+		3000
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Vue.volar",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode"
+			]
+		}
+	}
+}

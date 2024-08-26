@@ -1,0 +1,15 @@
+{
+  "name": "vue",
+  "private": true,
+  "engines": {
+    "node": "22.6.0"
+  },
+  "packageManager": "pnpm@9.8.0",
+  "scripts": {
+    "context": "pnpm --filter context"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.1",
+    "prettier": "^3.3.3"
+  }
+}
