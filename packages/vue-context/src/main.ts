@@ -18,6 +18,7 @@ type ContextConsumer<T> = DefineSetupFnComponent<
 >;
 type Context<T> = {
   injectionKey: InjectionKey<T>;
+  defaultValue?: T;
   Provider: ContextProvider<T>;
   Consumer: ContextConsumer<T>;
 };
@@ -36,11 +37,12 @@ const createContextProvider = <T>(
   );
 
 const createContextConsumer = <T>(
-  injectionKey: InjectionKey<T>
+  injectionKey: InjectionKey<T>,
+  defaultValue?: T,
 ): ContextConsumer<T> =>
   defineComponent(
     (_, ctx) => {
-      const value = inject(injectionKey);
+      const value = inject(injectionKey, defaultValue);
       return () => ctx.slots?.default?.(value);
     },
     {
@@ -48,12 +50,13 @@ const createContextConsumer = <T>(
     }
   );
 
-export function createContext<T>(name: string): Context<T> {
+export function createContext<T>(name: string, defaultValue?: T): Context<T> {
   const injectionKey = Symbol(name) as InjectionKey<T>;
   const Provider = createContextProvider<T>(injectionKey);
-  const Consumer = createContextConsumer<T>(injectionKey);
-  const context = {
+  const Consumer = createContextConsumer<T>(injectionKey, defaultValue);
+  const context: Context<T> = {
     injectionKey,
+    defaultValue,
     Provider,
     Consumer,
   };
@@ -61,5 +64,5 @@ export function createContext<T>(name: string): Context<T> {
 }
 
 export function useContext<T>(context: Context<T>): T | undefined {
-  return inject(context.injectionKey);
+  return inject(context.injectionKey, context.defaultValue);
 }
