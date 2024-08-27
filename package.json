@@ -6,7 +6,8 @@
   },
   "packageManager": "pnpm@9.8.0",
   "scripts": {
-    "context": "pnpm --filter context"
+    "documentation": "pnpm --filter docs",
+    "vue-context": "pnpm --filter vue-context"
   },
   "devDependencies": {
     "eslint": "^9.9.1",
