@@ -4,6 +4,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "aryan02420/vue",
   description: "A collection of Vue.js utilities",
+  lastUpdated: true,
   srcDir: "../../",
   rewrites: {
     "apps/docs/:path*": ":path*",
@@ -37,5 +38,23 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/aryan02420/vue" },
     ],
+    search: {
+      provider: 'local',
+    },
+    outline: 'deep',
+    lastUpdated: {
+      formatOptions: {
+        dateStyle: 'long',
+        timeStyle: 'short',
+      },
+    },
+    editLink: {
+      pattern: 'https://github.com/aryan02420/vue/blob/main/:path',
+    },
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2024-present aryan02420',
+    },
   },
+
 });
