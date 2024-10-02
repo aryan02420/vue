@@ -6,6 +6,7 @@ export default defineConfig({
   description: "A collection of Vue.js utilities",
   lastUpdated: true,
   srcDir: "../../",
+  cleanUrls: true,
   rewrites: {
     "apps/docs/:path*": ":path*",
     "packages/vue-context/README.md": "vue-context.md",
