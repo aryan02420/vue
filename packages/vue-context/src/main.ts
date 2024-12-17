@@ -1,10 +1,10 @@
-import { defineComponent, inject, provide } from "vue-demi";
+import { defineComponent, inject, provide } from "vue";
 import type {
   DefineSetupFnComponent,
   InjectionKey,
   Slot,
   SlotsType,
-} from "vue-demi";
+} from "vue";
 
 type ContextProvider<T> = DefineSetupFnComponent<
   { value: T },
