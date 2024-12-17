@@ -2,15 +2,15 @@
   "name": "vue",
   "private": true,
   "engines": {
-    "node": "22.8.0"
+    "node": "22.9.0"
   },
-  "packageManager": "pnpm@9.10.0",
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "documentation": "pnpm --filter docs",
     "vue-context": "pnpm --filter vue-context"
   },
   "devDependencies": {
-    "eslint": "^9.10.0",
-    "prettier": "^3.3.3"
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2"
   }
 }
