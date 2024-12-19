@@ -24,7 +24,8 @@ type Context<T> = {
 };
 
 const createContextProvider = <T>(
-  injectionKey: InjectionKey<T>
+  injectionKey: InjectionKey<T>,
+  name: string,
 ): ContextProvider<T> =>
   defineComponent(
     (props, ctx) => {
@@ -33,11 +34,13 @@ const createContextProvider = <T>(
     },
     {
       props: ["value"],
+      name: name + 'ContextProvider'
     }
   );
 
 const createContextConsumer = <T>(
   injectionKey: InjectionKey<T>,
+  name: string,
   defaultValue?: T,
 ): ContextConsumer<T> =>
   defineComponent(
@@ -47,13 +50,14 @@ const createContextConsumer = <T>(
     },
     {
       props: [],
+      name: name + 'ContextConsumer',
     }
   );
 
 export function createContext<T>(name: string, defaultValue?: T): Context<T> {
   const injectionKey = Symbol(name) as InjectionKey<T>;
-  const Provider = createContextProvider<T>(injectionKey);
-  const Consumer = createContextConsumer<T>(injectionKey, defaultValue);
+  const Provider = createContextProvider<T>(injectionKey, name);
+  const Consumer = createContextConsumer<T>(injectionKey, name, defaultValue);
   const context: Context<T> = {
     injectionKey,
     defaultValue,
