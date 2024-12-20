@@ -3,7 +3,7 @@ import {
   useContext as useContextRaw,
 } from "./main.ts";
 
-export function createContext<T>(name: string) {
+export function createContext<T extends Record<string, unknown>>(name: string) {
   const rawContext = createContextRaw<T>(name);
 
   function useContext() {
