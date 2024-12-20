@@ -10,6 +10,8 @@ export default defineConfig({
   rewrites: {
     "apps/docs/:path*": ":path*",
     "packages/vue-context/README.md": "vue-context.md",
+    "packages/vue-context/docs/:path*": "vue-context/:path*",
+    "packages/vue-context/src/:path*": "vue-context/src/:path*",
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -32,6 +34,7 @@ export default defineConfig({
           {
             text: "vue-context",
             link: "/vue-context",
+            items: [{ text: "Demo", link: "/vue-context/demo" }],
           },
         ],
       },
@@ -57,5 +60,4 @@ export default defineConfig({
       copyright: 'Copyright © 2024-present aryan02420',
     },
   },
-
 });
