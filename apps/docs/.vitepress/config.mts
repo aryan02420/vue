@@ -34,7 +34,7 @@ export default defineConfig({
           {
             text: "vue-context",
             link: "/vue-context",
-            items: [{ text: "Demo", link: "/vue-context/demo" }],
+            items: [{ text: "Examples", link: "/vue-context/examples" }],
           },
         ],
       },
