@@ -2,6 +2,21 @@
   "name": "@aryan02420/vue-context",
   "version": "0.0.0",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./src/main.ts",
+        "default": "./dist/main.js"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./src/utils.ts",
+        "default": "./dist/utils.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
