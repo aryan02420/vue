@@ -6,6 +6,11 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  resolve: {
+    alias: {
+      '@aryan02420/vue-context': '/',
+    },
+  },
   build: {
     lib: {
       entry: [
@@ -24,10 +29,6 @@ export default defineConfig({
     minify: false,
   },
   test: {
-    globals: true,
     environment: 'jsdom',
-    alias: {
-      '@aryan02420/vue-context': '/',
-    }
   },
 })
