@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import CountContext from "./count-context";
-import UseContextComponent from "./use-context-component.vue";
+import CountDisplay from "./count-display.vue";
 
 const count = ref(0);
 const contextValue = reactive({ count });
@@ -10,13 +10,19 @@ const contextValue = reactive({ count });
 <template>
   <div>
     <CountContext.Provider :value="contextValue">
-      <UseContextComponent />
+      <CountDisplay />
     </CountContext.Provider>
     <button @click="count++">Increment</button>
   </div>
 </template>
 
 <style scoped>
+div {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 16px;
+}
 button {
   background-color: darkgreen;
   color: white;

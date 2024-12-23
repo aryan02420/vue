@@ -1,6 +1,11 @@
+---
+title: Examples | vue-context
+---
+
 <script setup lang="ts">
-import ProviderConsumerComponents from '../src/examples/provider-consumer-components.vue';
-import ProviderComponent from '../src/examples/provider-component.vue';
+import Example1 from '../src/examples/using-provider-consumer-components/app.vue';
+import Example2 from '../src/examples/using-use-context-composable/app.vue';
+import Example3 from '../src/examples/using-fallback-value/app.vue';
 </script>
 
 # Examples
@@ -8,20 +13,32 @@ import ProviderComponent from '../src/examples/provider-component.vue';
 ## Using the Provider and Consumer components
 
 ::: info Preview
-<ProviderConsumerComponents />
+<Example1 />
 :::
 ::: code-group
-<<<../src/examples/provider-consumer-components.vue
-<<<../src/examples/count-context.ts
+<<<../src/examples/using-provider-consumer-components/app.vue
+<<<../src/examples/using-provider-consumer-components/count-display.vue
+<<<../src/examples/using-provider-consumer-components/count-context.ts
 :::
 
 ## Using the `useContext` composable
 
 ::: info Preview
-<ProviderComponent />
+<Example2 />
 :::
 ::: code-group
-<<<../src/examples/provider-component.vue
-<<<../src/examples/use-context-component.vue
-<<<../src/examples/count-context.ts
+<<<../src/examples/using-use-context-composable/app.vue
+<<<../src/examples/using-use-context-composable/count-display.vue
+<<<../src/examples/using-use-context-composable/count-context.ts
+:::
+
+## Non reactive fallback value
+
+::: info Preview
+<Example3 />
+:::
+::: code-group
+<<<../src/examples/using-fallback-value/app.vue
+<<<../src/examples/using-fallback-value/count-display.vue
+<<<../src/examples/using-fallback-value/count-context.ts
 :::
