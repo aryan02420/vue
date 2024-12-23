@@ -32,7 +32,7 @@ import Example3 from '../src/examples/using-fallback-value/app.vue';
 <<<../src/examples/using-use-context-composable/count-context.ts
 :::
 
-## Non reactive fallback value
+## Using a fallback value
 
 ::: info Preview
 <Example3 />
