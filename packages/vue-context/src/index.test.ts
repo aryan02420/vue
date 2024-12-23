@@ -37,3 +37,15 @@ test("fallback value", async () => {
   const wrapper = mount(FallbackValue);
   expect(wrapper.text()).toContain("Count: 42");
 });
+
+import CreateContextUtil from "./examples/using-create-context-util/app.vue";
+
+test("createContext Util", async () => {
+  expect(CreateContextUtil).toBeTruthy();
+  
+  const wrapper = mount(CreateContextUtil);
+  expect(wrapper.text()).toContain("Count: 0");
+  
+  await wrapper.find("button").trigger("click");
+  expect(wrapper.text()).toContain("Count: 1");
+});

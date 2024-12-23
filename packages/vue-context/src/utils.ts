@@ -14,7 +14,7 @@ export function createContext<TValue extends AnyContextValue>(name: string) {
         `useContext must be used inside "${name}" ContextProvider`
       );
     }
-    return value as TValue;
+    return value;
   }
 
   return { Provider: vanillaContext.Provider, useContext };

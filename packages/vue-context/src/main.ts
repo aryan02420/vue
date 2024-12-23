@@ -9,6 +9,7 @@ import type {
 
 type MaybeReactive<T> = Reactive<T> | T;
 export type AnyContextValue = Record<string, unknown>;
+
 type ContextProvider<TValue extends AnyContextValue> = DefineSetupFnComponent<
   { value: TValue },
   {},
