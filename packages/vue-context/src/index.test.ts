@@ -5,7 +5,7 @@ test("Sanity check", () => {
   expect(1 + 2).toBe(3);
 });
 
-import ProviderConsumerComponents from "./examples/provider-consumer-components.vue";
+import ProviderConsumerComponents from "./examples/using-provider-consumer-components/app.vue";
 
 test("Provider and Consumer components", async () => {
   expect(ProviderConsumerComponents).toBeTruthy();
@@ -17,14 +17,23 @@ test("Provider and Consumer components", async () => {
   expect(wrapper.text()).toContain("Count: 1");
 });
 
-import ProviderComponent from "./examples/provider-component.vue";
+import UseContextComposable from "./examples/using-use-context-composable/app.vue";
 
 test("useContext composable", async () => {
-  expect(ProviderComponent).toBeTruthy();
+  expect(UseContextComposable).toBeTruthy();
   
-  const wrapper = mount(ProviderComponent);
+  const wrapper = mount(UseContextComposable);
   expect(wrapper.text()).toContain("Count: 0");
   
   await wrapper.find("button").trigger("click");
   expect(wrapper.text()).toContain("Count: 1");
+});
+
+import FallbackValue from "./examples/using-fallback-value/app.vue";
+
+test("fallback value", async () => {
+  expect(FallbackValue).toBeTruthy();
+  
+  const wrapper = mount(FallbackValue);
+  expect(wrapper.text()).toContain("Count: 42");
 });
