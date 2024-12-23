@@ -1,20 +1,21 @@
 import {
-  createContext as createContextRaw,
-  useContext as useContextRaw,
+  createContext as createVanillaContext,
+  useContext as useVanillaContext,
 } from "./main.ts";
+import type { AnyContextValue } from "./main.ts";
 
-export function createContext<T extends Record<string, unknown>>(name: string) {
-  const rawContext = createContextRaw<T>(name);
+export function createContext<TValue extends AnyContextValue>(name: string) {
+  const vanillaContext = createVanillaContext<TValue>(name);
 
   function useContext() {
-    const value = useContextRaw(rawContext);
+    const value = useVanillaContext(vanillaContext);
     if (value === undefined) {
       throw new Error(
         `useContext must be used inside "${name}" ContextProvider`
       );
     }
-    return value as T;
+    return value as TValue;
   }
 
-  return { Provider: rawContext.Provider, useContext };
+  return { Provider: vanillaContext.Provider, useContext };
 }

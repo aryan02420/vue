@@ -1,4 +1,4 @@
-import { defineComponent, inject, provide, reactive } from "vue";
+import { defineComponent, inject, provide } from "vue";
 import type {
   DefineSetupFnComponent,
   InjectionKey,
@@ -8,32 +8,31 @@ import type {
 } from "vue";
 
 type MaybeReactive<T> = Reactive<T> | T;
-type ContextValue = Record<string, unknown>;
-type ContextProvider<T extends ContextValue> = DefineSetupFnComponent<
-  { value: T },
+export type AnyContextValue = Record<string, unknown>;
+type ContextProvider<TValue extends AnyContextValue> = DefineSetupFnComponent<
+  { value: TValue },
   {},
   SlotsType<{ default: Slot<undefined> }>
 >;
-type ContextConsumer<T extends ContextValue> = DefineSetupFnComponent<
+type ContextConsumer<TValue extends AnyContextValue> = DefineSetupFnComponent<
   {},
   {},
-  SlotsType<{ default?: Slot<MaybeReactive<T> | undefined> }>
+  SlotsType<{ default?: Slot<MaybeReactive<TValue> | undefined> }>
 >;
-type Context<T extends ContextValue> = {
-  injectionKey: InjectionKey<MaybeReactive<T>>;
-  defaultValue?: T;
-  Provider: ContextProvider<T>;
-  Consumer: ContextConsumer<T>;
+type Context<TValue extends AnyContextValue> = {
+  injectionKey: InjectionKey<MaybeReactive<TValue>>;
+  defaultValue?: TValue;
+  Provider: ContextProvider<TValue>;
+  Consumer: ContextConsumer<TValue>;
 };
 
-const createContextProvider = <T extends ContextValue>(
-  injectionKey: InjectionKey<MaybeReactive<T>>,
+const createContextProvider = <TValue extends AnyContextValue>(
+  injectionKey: InjectionKey<MaybeReactive<TValue>>,
   name: string,
-): ContextProvider<T> =>
+): ContextProvider<TValue> =>
   defineComponent(
     (props, ctx) => {
-      const contextValue = reactive(props.value);
-      provide(injectionKey, contextValue);
+      provide(injectionKey, props.value);
       return () => ctx.slots?.default?.();
     },
     {
@@ -42,11 +41,11 @@ const createContextProvider = <T extends ContextValue>(
     }
   );
 
-const createContextConsumer = <T extends ContextValue>(
-  injectionKey: InjectionKey<MaybeReactive<T>>,
+const createContextConsumer = <TValue extends AnyContextValue>(
+  injectionKey: InjectionKey<MaybeReactive<TValue>>,
   name: string,
-  defaultValue?: T,
-): ContextConsumer<T> =>
+  defaultValue?: TValue,
+): ContextConsumer<TValue> =>
   defineComponent(
     (_, ctx) => {
       const value = inject(injectionKey, defaultValue);
@@ -64,11 +63,11 @@ const createContextConsumer = <T extends ContextValue>(
  * @param defaultValue The non reactive fallback value to be used when the context is not provided.
  * @returns The context object containing the Provider and Consumer components along with some metadata.
  */
-export function createContext<T extends ContextValue>(name: string, defaultValue?: T): Context<T> {
-  const injectionKey = Symbol(name) as InjectionKey<MaybeReactive<T>>;
-  const Provider = createContextProvider<T>(injectionKey, name);
-  const Consumer = createContextConsumer<T>(injectionKey, name, defaultValue);
-  const context: Context<T> = {
+export function createContext<TValue extends AnyContextValue>(name: string, defaultValue?: TValue): Context<TValue> {
+  const injectionKey = Symbol(name) as InjectionKey<MaybeReactive<TValue>>;
+  const Provider = createContextProvider<TValue>(injectionKey, name);
+  const Consumer = createContextConsumer<TValue>(injectionKey, name, defaultValue);
+  const context: Context<TValue> = {
     injectionKey,
     defaultValue,
     Provider,
@@ -77,6 +76,6 @@ export function createContext<T extends ContextValue>(name: string, defaultValue
   return context;
 }
 
-export function useContext<T extends ContextValue>(context: Context<T>): MaybeReactive<T> | undefined {
+export function useContext<TValue extends AnyContextValue>(context: Context<TValue>): MaybeReactive<TValue> | undefined {
   return inject(context.injectionKey, context.defaultValue);
 }
