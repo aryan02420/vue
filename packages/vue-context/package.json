@@ -4,16 +4,12 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": {
-        "types": "./src/main.ts",
-        "default": "./dist/main.js"
-      }
+      "types": "./src/main.ts",
+      "default": "./dist/main.js"
     },
     "./utils": {
-      "import": {
-        "types": "./src/utils.ts",
-        "default": "./dist/utils.js"
-      }
+      "types": "./src/utils.ts",
+      "default": "./dist/utils.js"
     },
     "./package.json": "./package.json"
   },
