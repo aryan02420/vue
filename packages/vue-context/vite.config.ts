@@ -17,7 +17,7 @@ export default defineConfig({
         'src/main.ts',
         'src/utils.ts',
       ],
-      formats: ['es'],
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
       external: ['vue'],
