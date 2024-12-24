@@ -60,4 +60,7 @@ export default defineConfig({
       copyright: 'Copyright © 2024-present aryan02420',
     },
   },
+  vite: {
+    logLevel: "info",
+  }
 });
