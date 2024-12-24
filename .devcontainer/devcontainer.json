@@ -3,10 +3,12 @@
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bullseye",
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/pnpm:2": {
-			"version": "9.10.0"
+			"version": "9.15.0"
 		}
 	},
 	"forwardPorts": [
+		5173,
+		4173,
 		3000
 	],
 	"customizations": {
