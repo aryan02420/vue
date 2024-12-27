@@ -1,60 +1,8 @@
-import { defineComponent, inject, provide } from "vue";
-import type {
-  DefineSetupFnComponent,
-  InjectionKey,
-  Slot,
-  SlotsType,
-} from "vue";
-
-export type AnyContextValue = Record<string, unknown>;
-
-type ContextProvider<TValue extends AnyContextValue> = DefineSetupFnComponent<
-  { value: TValue },
-  {},
-  SlotsType<{ default: Slot<undefined> }>
->;
-type ContextConsumer<TValue extends AnyContextValue> = DefineSetupFnComponent<
-  {},
-  {},
-  SlotsType<{ default?: Slot<TValue | undefined> }>
->;
-type Context<TValue extends AnyContextValue> = {
-  injectionKey: InjectionKey<TValue>;
-  defaultValue?: TValue;
-  Provider: ContextProvider<TValue>;
-  Consumer: ContextConsumer<TValue>;
-};
-
-const createContextProvider = <TValue extends AnyContextValue>(
-  injectionKey: InjectionKey<TValue>,
-  name: string,
-): ContextProvider<TValue> =>
-  defineComponent(
-    (props, ctx) => {
-      provide(injectionKey, props.value);
-      return () => ctx.slots?.default?.();
-    },
-    {
-      props: ["value"],
-      name: name + 'ContextProvider'
-    }
-  );
-
-const createContextConsumer = <TValue extends AnyContextValue>(
-  injectionKey: InjectionKey<TValue>,
-  name: string,
-  defaultValue?: TValue,
-): ContextConsumer<TValue> =>
-  defineComponent(
-    (_, ctx) => {
-      const value = inject(injectionKey, defaultValue);
-      return () => ctx.slots?.default?.(value);
-    },
-    {
-      props: [],
-      name: name + 'ContextConsumer',
-    }
-  );
+import { inject } from "vue";
+import type { InjectionKey } from "vue";
+import { AnyContextValue, Context } from "./types.ts";
+import { createContextProvider } from "./create-context-provider.ts";
+import { createContextConsumer } from "./create-context-consumer.ts";
 
 /**
  * 
