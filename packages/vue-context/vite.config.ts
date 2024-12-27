@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@aryan02420/vue-context': '/',
+      '@aryan02420/vue-context/*': '/',
     },
   },
   build: {
@@ -18,7 +18,7 @@ export default defineConfig({
         'src/util.ts',
         'src/composable.ts',
       ],
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
     rollupOptions: {
       external: ['vue'],

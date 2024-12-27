@@ -25,23 +25,23 @@
     "!*.test.ts"
   ],
   "types": "./src/main.ts",
-  "main": "./dist/main.cjs",
+  "main": "./dist/main.js",
   "module": "./dist/main.js",
   "exports": {
     ".": {
+      "development": "./src/main.ts",
       "types": "./src/main.ts",
-      "import": "./dist/main.js",
-      "require": "./dist/main.cjs"
+      "default": "./dist/main.js"
     },
     "./util": {
+      "development": "./src/util.ts",
       "types": "./src/util.ts",
-      "import": "./dist/util.js",
-      "require": "./dist/util.cjs"
+      "default": "./dist/util.js"
     },
     "./composable": {
+      "development": "./src/composable.ts",
       "types": "./src/composable.ts",
-      "import": "./dist/composable.js",
-      "require": "./dist/composable.cjs"
+      "default": "./dist/composable.js"
     },
     "./types": "./src/types.ts",
     "./package.json": "./package.json"

@@ -1,4 +1,4 @@
-import { createContext } from "../../util.ts";
+import { createContext } from "@aryan02420/vue-context/util";
 
 const {
 	Provider: CountProvider,

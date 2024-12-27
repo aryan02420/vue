@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@aryan02420/vue-context": ["./"]
+      "@aryan02420/vue-context/*": ["./"]
     }
   },
   "include": ["vite.config.ts"]
