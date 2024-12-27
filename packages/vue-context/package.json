@@ -33,16 +33,17 @@
       "import": "./dist/main.js",
       "require": "./dist/main.cjs"
     },
-    "./utils": {
-      "types": "./src/utils.ts",
-      "import": "./dist/utils.js",
-      "require": "./dist/utils.cjs"
+    "./util": {
+      "types": "./src/util.ts",
+      "import": "./dist/util.js",
+      "require": "./dist/util.cjs"
     },
     "./composable": {
       "types": "./src/composable.ts",
       "import": "./dist/composable.js",
       "require": "./dist/composable.cjs"
     },
+    "./types": "./src/types.ts",
     "./package.json": "./package.json"
   },
   "scripts": {

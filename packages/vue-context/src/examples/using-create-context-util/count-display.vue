@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCount } from "./count-context";
+import { useCount } from "./count-context.ts";
 
 const value = useCount();
 </script>

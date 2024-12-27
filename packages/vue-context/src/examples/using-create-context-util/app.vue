@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import { CountProvider } from "./count-context";
+import { CountProvider } from "./count-context.ts";
 import CountDisplay from "./count-display.vue";
 
 const count = ref(0);

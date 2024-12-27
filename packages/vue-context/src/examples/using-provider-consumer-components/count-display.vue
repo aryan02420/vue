@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CountContext from "./count-context";
+import CountContext from "./count-context.ts";
 </script>
 
 <template>

@@ -15,7 +15,7 @@ export default defineConfig({
     lib: {
       entry: [
         'src/main.ts',
-        'src/utils.ts',
+        'src/util.ts',
         'src/composable.ts',
       ],
       formats: ['es', 'cjs'],
