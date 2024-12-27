@@ -16,6 +16,7 @@ export default defineConfig({
       entry: [
         'src/main.ts',
         'src/utils.ts',
+        'src/composable.ts',
       ],
       formats: ['es', 'cjs'],
     },
