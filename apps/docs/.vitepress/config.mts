@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import vueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -62,5 +63,8 @@ export default defineConfig({
   },
   vite: {
     logLevel: "info",
+    plugins: [
+      vueDevTools(),
+    ],
   }
 });
