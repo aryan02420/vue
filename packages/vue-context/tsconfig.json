@@ -1,6 +1,9 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.node.json" }
-  ]
+  "extends": "../../tsconfig.base.json",
+  "include": ["vite.config.ts"],
+  "compilerOptions": {
+    "paths": {
+      "@aryan02420/vue-context/*": ["./"],
+    },
+  },
 }
