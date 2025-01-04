@@ -17,5 +17,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+
+    "paths": {
+      "@aryan02420/vue-context/*": ["./packages/vue-context/"],
+    },
   },
 }
