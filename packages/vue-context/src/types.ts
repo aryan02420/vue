@@ -1,25 +1,26 @@
 import type {
   DefineSetupFnComponent,
   InjectionKey,
-  Ref,
   Slot,
   SlotsType,
 } from "vue";
 
-export type ContextProvider<TValue> = DefineSetupFnComponent<
+export type AnyContextValue = Record<string, unknown>;
+
+export type ContextProvider<TValue extends AnyContextValue> = DefineSetupFnComponent<
   { value: TValue },
   {},
   SlotsType<{ default: Slot<undefined> }>
 >;
 
-export type ContextConsumer<TValue> = DefineSetupFnComponent<
+export type ContextConsumer<TValue extends AnyContextValue> = DefineSetupFnComponent<
   {},
   {},
   SlotsType<{ default?: Slot<TValue | undefined> }>
 >;
 
-export type Context<TValue> = {
-  injectionKey: InjectionKey<Ref<TValue>>;
+export type Context<TValue extends AnyContextValue> = {
+  injectionKey: InjectionKey<TValue>;
   defaultValue?: TValue;
   Provider: ContextProvider<TValue>;
   Consumer: ContextConsumer<TValue>;

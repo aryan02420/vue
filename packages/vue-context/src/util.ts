@@ -2,8 +2,9 @@ import {
   createContext as createVanillaContext,
   useContext as useVanillaContext,
 } from "./main.ts";
+import type { AnyContextValue } from "./types.ts";
 
-export function createContext<TValue>(name: string) {
+export function createContext<TValue extends AnyContextValue>(name: string) {
   const vanillaContext = createVanillaContext<TValue>(name);
 
   function useContext() {

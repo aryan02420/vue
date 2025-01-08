@@ -7,7 +7,6 @@ import Example1 from '../src/examples/using-provider-consumer-components/app.vue
 import Example2 from '../src/examples/using-use-context-composable/app.vue';
 import Example3 from '../src/examples/using-fallback-value/app.vue';
 import Example4 from '../src/examples/using-create-context-util/app.vue';
-import Example5 from '../src/examples/providing-simple-value/app.vue';
 </script>
 
 # Examples
@@ -54,17 +53,6 @@ import Example5 from '../src/examples/providing-simple-value/app.vue';
 <<<../src/examples/using-create-context-util/app.vue
 <<<../src/examples/using-create-context-util/count-display.vue
 <<<../src/examples/using-create-context-util/count-context.ts
-:::
-
-## Providing a simple value
-
-::: info Preview
-<Example5 />
-:::
-::: code-group
-<<<../src/examples/providing-simple-value/app.vue
-<<<../src/examples/providing-simple-value/count-display.vue
-<<<../src/examples/providing-simple-value/count-context.ts
 :::
 
 ## Providing a non reactive value
