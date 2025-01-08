@@ -48,7 +48,8 @@
   },
   "scripts": {
     "build": "vue-tsc -b && vite build",
-    "test": "vitest"
+    "test": "vitest",
+    "typecheck": "vue-tsc -b --verbose"
   },
   "dependencies": {},
   "peerDependencies": {
