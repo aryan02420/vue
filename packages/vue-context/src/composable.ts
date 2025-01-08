@@ -1,8 +1,7 @@
 import { inject, provide } from "vue";
 import type { InjectionKey } from "vue";
-import type { AnyContextValue } from "./types.ts";
 
-export function createContext<TValue extends AnyContextValue>(name: string) {
+export function createContext<TValue>(name: string) {
   const injectionKey = Symbol(name) as InjectionKey<TValue>;
   
   function useContextProvider(value: TValue) {

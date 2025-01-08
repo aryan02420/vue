@@ -49,3 +49,15 @@ test("createContext Util", async () => {
   await wrapper.find("button").trigger("click");
   expect(wrapper.text()).toContain("Count: 1");
 });
+
+import ProvidingSimpleValue from "./examples/providing-simple-value/app.vue";
+
+test("providing a simple value", async () => {
+  expect(ProvidingSimpleValue).toBeTruthy();
+  
+  const wrapper = mount(ProvidingSimpleValue);
+  expect(wrapper.text()).toContain("Count: 0");
+  
+  await wrapper.find("button").trigger("click");
+  expect(wrapper.text()).toContain("Count: 1");
+});

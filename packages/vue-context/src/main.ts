@@ -1,6 +1,6 @@
 import { inject } from "vue";
 import type { InjectionKey } from "vue";
-import { AnyContextValue, Context } from "./types.ts";
+import { Context } from "./types.ts";
 import { createContextProvider } from "./create-context-provider.ts";
 import { createContextConsumer } from "./create-context-consumer.ts";
 
@@ -10,7 +10,7 @@ import { createContextConsumer } from "./create-context-consumer.ts";
  * @param defaultValue The non reactive fallback value to be used when the context is not provided.
  * @returns The context object containing the Provider and Consumer components along with some metadata.
  */
-export function createContext<TValue extends AnyContextValue>(name: string, defaultValue?: TValue): Context<TValue> {
+export function createContext<TValue>(name: string, defaultValue?: TValue): Context<TValue> {
   const injectionKey = Symbol(name) as InjectionKey<TValue>;
   const Provider = createContextProvider<TValue>(injectionKey, name);
   const Consumer = createContextConsumer<TValue>(injectionKey, name, defaultValue);
@@ -23,6 +23,6 @@ export function createContext<TValue extends AnyContextValue>(name: string, defa
   return context;
 }
 
-export function useContext<TValue extends AnyContextValue>(context: Context<TValue>): TValue | undefined {
+export function useContext<TValue>(context: Context<TValue>): TValue | undefined {
   return inject(context.injectionKey, context.defaultValue);
 }
